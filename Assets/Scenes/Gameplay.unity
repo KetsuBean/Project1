@@ -1168,6 +1168,7 @@ GameObject:
   - component: {fileID: 138146651}
   - component: {fileID: 138146650}
   - component: {fileID: 138146649}
+  - component: {fileID: 138146653}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -1291,8 +1292,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1015001334}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &138146653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138146648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1883aec1a71dc4f1c9cd13c635a69fd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
+  player: {fileID: 1015001334}
 --- !u!1 &569939702
 GameObject:
   m_ObjectHideFlags: 0
@@ -1540,7 +1554,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 650029402}
-  - {fileID: 138146652}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1015001335
@@ -1745,13 +1758,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847538294}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 33177510}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2139053388}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1988378404
 GameObject:
@@ -1882,6 +1895,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1825007822}
+  - {fileID: 1847538296}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &841660843690866958
@@ -1961,8 +1975,8 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 138146652}
   - {fileID: 1015001334}
   - {fileID: 841660843690866958}
   - {fileID: 2139053388}
-  - {fileID: 1847538296}
   - {fileID: 2089288396}
