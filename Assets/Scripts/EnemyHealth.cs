@@ -5,6 +5,7 @@ public class EnemyHealth : MonoBehaviour
     public int maxHealth = 3;
     public int coinReward = 1;
     public PlayerInventory playerInventory;
+    public RunScore runScore;
 
     private int currentHealth;
 
@@ -28,6 +29,7 @@ public class EnemyHealth : MonoBehaviour
         {
             Debug.Log($"{gameObject.name} defeated!");
 
+            runScore.AddKill();
             playerInventory.AddCoins(coinReward);
             gameObject.SetActive(false);
         }
