@@ -10,7 +10,7 @@ public class RunScore : MonoBehaviour
         enemiesDefeated = 0;
         highScore = PlayerPrefs.GetInt("KillHighScore", 0);
 
-        Debug.Log($"Best kill count: {highScore}");
+        Debug.Log($"High Score: {highScore}");
     }
 
     public void AddKill()
