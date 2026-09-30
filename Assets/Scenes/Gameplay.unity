@@ -1808,6 +1808,7 @@ GameObject:
   - component: {fileID: 2089288396}
   - component: {fileID: 2089288397}
   - component: {fileID: 2089288398}
+  - component: {fileID: 2089288399}
   m_Layer: 0
   m_Name: GameplaySystems
   m_TagString: Untagged
@@ -1865,6 +1866,18 @@ MonoBehaviour:
   - {fileID: 569939703}
   - {fileID: 1545127994}
   spawnInterval: 2
+--- !u!114 &2089288399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089288395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f4a94cf95490409fbab06db9cc6cdf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
 --- !u!1 &2139053387
 GameObject:
   m_ObjectHideFlags: 0
