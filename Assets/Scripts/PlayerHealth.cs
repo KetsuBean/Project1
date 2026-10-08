@@ -1,26 +1,38 @@
 using UnityEngine;
+using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 5;
+    public TMP_Text healthText;
 
     private int currentHealth;
 
     private void Awake()
     {
         currentHealth = maxHealth;
+        UpdateHealthText();
     }
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            return;
+        }
 
-        Debug.Log($"Player hit for {damage} damage. Health: {currentHealth}/{maxHealth}");
+        currentHealth = Mathf.Max(0, currentHealth - damage);
+        UpdateHealthText();
 
         if (currentHealth <= 0)
         {
             Debug.Log("Player defeated!");
             gameObject.SetActive(false);
         }
+    }
+
+    private void UpdateHealthText()
+    {
+        healthText.text = "Health: " + currentHealth + "/" + maxHealth;
     }
 }

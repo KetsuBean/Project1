@@ -4,7 +4,6 @@ public class EnemySpawner : MonoBehaviour
 {
     public SimplePool pool;
     public Transform player;
-    public PlayerInventory playerInventory;
     public RunScore runScore;
     public Transform[] spawnPoints;
 
@@ -43,7 +42,6 @@ public class EnemySpawner : MonoBehaviour
             movement.player = player;
 
             EnemyHealth health = enemy.GetComponent<EnemyHealth>();
-            health.playerInventory = playerInventory;
             health.runScore = runScore;
         }
     }

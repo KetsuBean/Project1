@@ -1,7 +1,11 @@
 using UnityEngine;
+using TMPro;
 
 public class RunScore : MonoBehaviour
 {
+    public TMP_Text scoreText;
+    public TMP_Text highScoreText;
+
     private int enemiesDefeated;
     private int highScore;
 
@@ -9,8 +13,7 @@ public class RunScore : MonoBehaviour
     {
         enemiesDefeated = 0;
         highScore = PlayerPrefs.GetInt("KillHighScore", 0);
-
-        Debug.Log($"High Score: {highScore}");
+        UpdateScoreText();
     }
 
     public void AddKill()
@@ -25,6 +28,12 @@ public class RunScore : MonoBehaviour
             PlayerPrefs.Save();
         }
 
-        Debug.Log($"Kills: {enemiesDefeated} | Best: {highScore}");
+        UpdateScoreText();
+    }
+
+    private void UpdateScoreText()
+    {
+        scoreText.text = "Score: " + enemiesDefeated;
+        highScoreText.text = "High Score: " + highScore;
     }
 }
