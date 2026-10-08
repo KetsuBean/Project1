@@ -5,6 +5,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 5;
     public TMP_Text healthText;
+    public GameOverManager gameOverManager;
 
     private int currentHealth;
 
@@ -27,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Debug.Log("Player defeated!");
+            gameOverManager.GameOver();
             gameObject.SetActive(false);
         }
     }
