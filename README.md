@@ -1,50 +1,44 @@
 # Project 1 — Orbiting Sword Survival
 
-An individual CPSC 386 project: a small 2D top-down survival game built around the Weeks 1–6 topics.
+## Script summary
 
-## Current status
+| Script | Purpose |
+| --- | --- |
+| PlayerMovement | Reads the Move input action and moves the player through Rigidbody2D. |
+| PlayerHealth | Tracks health, updates the health label, and triggers game over on death. |
+| CameraFollow | Follows the living player and stays in place after death. |
+| SwordOrbit | Rotates the sword pivot around the player. |
+| SwordDamage | Detects enemy triggers and applies sword damage. |
+| EnemyMovement | Moves enemies toward the player. |
+| EnemyHealth | Resets health when reused, takes damage, awards a kill, and deactivates defeated enemies. |
+| EnemyDamage | Applies contact damage with a cooldown between hits. |
+| SimplePool | Creates ten enemy instances and supplies inactive instances for reuse. |
+| EnemySpawner | Continuously spawns pooled enemies at random spawn points and assigns their scene references. Stops spawning after player death. |
+| RunScore | Counts kills, updates score labels, and saves the highest kill count with PlayerPrefs. |
+| SceneController | Loads Gameplay or MainMenu and restores normal time. |
+| PauseManager | Toggles the pause panel with Escape and pauses or resumes time. |
+| GameOverManager | Shows the game-over panel, stops gameplay, and handles Retry and Main Menu. |
 
-Unity starter project; gameplay has not been implemented yet.
+Unused earlier scripts remain in the project: PlayerInventory handled coins; PauseMenu and PauseMenuButtons handled an additive pause scene. These are not used in the submitted game. Welcome2DScript belongs to the Unity template's welcome content.
 
-- Current editor: **6000.6.2f1**, confirmed by the project owner for this project.
-- Template includes Universal Render Pipeline, Input System, Tilemap, and Canvas UI packages.
-- Entry scene for the starter: `Assets/Scenes/SampleScene.unity`.
+## Scenes and key GameObjects
 
-## Planned first version
+- **MainMenu:** The Canvas contains the Start button. Its click calls SceneController on MenuController to load Gameplay. The EventSystem handles UI input.
+- **Gameplay:** Player contains movement and health components, a SwordPivot/Sword for automatic attacks, and PlayerLight. Main Camera follows Player. Environment holds the collidable Walls Tilemap, Ground, AmbientLight, and spawn points. GameplaySystems manages spawning, scores, pause, and game over; its EnemyPool supplies reusable Enemy prefab instances. Sword hits reduce enemy health and defeated enemies increase the score. Enemy contact reduces player health. The Canvas displays health, score, and high score, plus pause and game-over panels. Death stops gameplay; Retry reloads the scene, and Main Menu returns to the start screen.
+- **Unused scenes:** SampleScene, the URP2DSceneTemplate, and the earlier PauseMenuUI scene are not included in the build. Pausing now uses a panel within Gameplay.
 
-- One arena, one enemy type, and one wave of enemies spawning over time.
-- Physics-based player movement and a sword that automatically orbits the player.
-- Enemies reused through object pooling based on Assignment 3's pattern.
-- Defeating enemies adds coins directly to inventory; coins persist using PlayerPrefs.
-- Defeat all enemies to win; lose all health to be defeated.
-- Main Menu and Gameplay scenes, pause/resume, Quit to Menu, and a simple hub light.
+## Assignment requirements
 
-Multiple waves, shops, random item drops, and a score system are deferred.
+1. **Scene management:** MainMenu's Start button loads Gameplay; Quit to Menu and the game-over Main Menu button return to MainMenu.
+2. **Input System and physics:** PlayerControls defines movement actions; Player Input supplies input to Rigidbody2D movement with a Collider2D.
+3. **Tilemap:** The arena boundary uses a Tilemap with Tilemap Collider 2D to block movement.
+4. **Prefabs and pooling:** SimplePool reuses ten Enemy prefab instances instead of repeatedly instantiating and destroying enemies.
+5. **Tags/layers and triggers:** SwordDamage uses OnTriggerEnter2D and CompareTag("Enemy") for combat; gameplay objects currently use the Default physics layer.
+6. **Pause menu:** A Canvas panel provides Resume and Quit to Menu; Escape toggles pause using Time.timeScale.
+7. **Persistence:** PlayerPrefs saves and reloads the highest kill count using `KillHighScore`, while each new run resets the current score.
+8. **Lighting/materials:** PlayerLight follows the player and illuminates lit sprites, with AmbientLight providing dim background lighting.
 
-## Open the project
+## Assets, packages, and assistance
 
-1. Clone the repository.
-2. In Unity Hub, add the cloned project folder.
-3. Open with the editor version recorded in `ProjectSettings/ProjectVersion.txt`.
-4. Allow Unity to restore packages and generate its local Library folder.
-5. Open `Assets/Scenes/SampleScene.unity`.
-
-## Version control
-
-Commit `Assets/` (including `.meta` files), `Packages/`, and `ProjectSettings/`.
-Generated caches, local editor settings, and builds are excluded by `.gitignore`.
-The project uses Force Text serialization and Visible Meta Files.
-Configure Git LFS before adding large binary assets; the starter currently does not require LFS.
-
-## Development milestones
-
-1. Project foundation and GitHub backup.
-2. Player movement and Tilemap arena.
-3. Sword combat, enemy health, and automatic coin rewards.
-4. Pooled spawning and the single-wave win/defeat loop.
-5. Menus, persistence, lighting, and testing a playable build.
-
-## AI assistance and assets
-
-Codex assisted with scope planning and initial repository setup (README and Git configuration files). Update this record as development continues for the course's AI-use disclosure.
-The initial assets are from the Unity project template. Record the source, license, usage, and any required instructor consent for additional third-party assets.
+- **Unity resources:** Built-in sprites and simple shapes provide the placeholder art.
+- **AI disclosure:** OpenAI Codex was used for documentation, debugging, and assistance drafting and adapting some scripts not covered in class, like continuous enemy spawning.
