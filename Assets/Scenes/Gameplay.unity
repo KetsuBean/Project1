@@ -2544,6 +2544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 5
   healthText: {fileID: 856075694}
+  gameOverManager: {fileID: 2089288401}
 --- !u!114 &1015001338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2913,9 +2914,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2089288399}
-        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
-        m_MethodName: QuitToMenu
+      - m_Target: {fileID: 2089288401}
+        m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3917,7 +3918,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1851108322}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2089288401}
+        m_TargetAssemblyTypeName: GameOverManager, Assembly-CSharp
+        m_MethodName: Retry
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1851108322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4228,6 +4241,7 @@ GameObject:
   - component: {fileID: 2089288398}
   - component: {fileID: 2089288400}
   - component: {fileID: 2089288399}
+  - component: {fileID: 2089288401}
   m_Layer: 0
   m_Name: GameplaySystems
   m_TagString: Untagged
@@ -4311,6 +4325,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseManager
   pauseMenuUI: {fileID: 1804147155}
+--- !u!114 &2089288401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089288395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30b80a40f002045feb7e395992650494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverManager
+  gameOverPanel: {fileID: 496638708}
+  pauseManager: {fileID: 2089288400}
 --- !u!1 &2139053387
 GameObject:
   m_ObjectHideFlags: 0
